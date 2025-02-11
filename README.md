@@ -168,10 +168,16 @@ PointBeV can also be used for different segmentation tasks such as pedestrians o
 
 ➡️ Create the environment.
 ```bash
-git clone https://github.com/...
-cd PointBeV
-micromamba create -f environment.yaml -y
-micromamba activate pointbev
+conda create -n pointbev python=3.10
+conda activate pointbev
+pip3 install torch torchvision torchaudio
+conda install lightning -c conda-forge
+
+pip install pytest
+pip install pyrootutils
+pip install hydra-core --upgrade
+pip install hydra_colorlog --upgrade
+pip install hydra-optuna-sweeper --upgrade
 ```
 
 ➡️ Install cuda dependencies.
@@ -186,6 +192,7 @@ We used nuScenes dataset for our experiments. You can download it from the offic
 mkdir data
 ln -s $PATH/nuscenes data/nuScenes
 pytest tests/test_datasets.py
+
 ```
 
 ➡️ Backbones:
